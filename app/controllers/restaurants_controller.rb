@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   def index
     @restaurants = Restaurant.all
+    @count =@restaurants.count
   end
 
   # GET /restaurants/1
@@ -22,6 +23,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     respond_to do |format|
       if @restaurant.save
+        @count = Restaurant.all.count
+
         @mensaje = "Restaurant was successfully created."
         format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
         format.turbo_stream
