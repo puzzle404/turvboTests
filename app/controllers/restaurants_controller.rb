@@ -11,9 +11,7 @@ class RestaurantsController < ApplicationController
   end
 
   # GET /restaurants/new
-  def new
-    @restaurant = Restaurant.new
-  end
+
 
   # GET /restaurants/1/edit
   def edit
@@ -22,20 +20,31 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
-    if @restaurant.save
-      redirect_to @restaurant, notice: "Restaurant was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @restaurant.save
+        @mensaje = "Restaurant was successfully created."
+        format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
+        format.turbo_stream
+        flash.now[:notice] = @mensaje
+      else
+        format.html { render :new, status: :unprocessable_entity}
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { restaurant: @restaurant } }
+      end
     end
   end
 
   # PATCH/PUT /restaurants/1
   def update
-    if @restaurant.update(restaurant_params)
-      redirect_to @restaurant, notice: "Restaurant was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @restaurant.update(restaurant_params)
+        @mensaje = "Restaurant was successfully created."
+          format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
+          format.turbo_stream { render :update, locals: { restaurant: @restaurant } }
+          flash.now[:notice] = @mensaje
+
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 

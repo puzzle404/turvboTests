@@ -1,0 +1,10 @@
+<div id="my-alert"  data-controller='flashes'>
+  <% if notice.present? %>
+    <div class="notice flash-messages" role="alert">
+      <%= notice %>
+      <i class="fa-solid fa-check"></i>
+      <%# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      </button> %>
+    </div>
+  <% end %>
+</div>

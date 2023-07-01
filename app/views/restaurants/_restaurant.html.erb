@@ -1,4 +1,4 @@
-<div id="<%= dom_id restaurant %>">
+<div id="<%= dom_id restaurant %>" class='border'>
   <p>
     <strong>Name:</strong>
     <%= restaurant.name %>
@@ -14,4 +14,8 @@
     <%= restaurant.rating %>
   </p>
 
+  <p>
+    <%= link_to "Show this restaurant", restaurant %>
+    <%= link_to "Edit this restaurant", edit_restaurant_path(restaurant) %> |
+  </p>
 </div>

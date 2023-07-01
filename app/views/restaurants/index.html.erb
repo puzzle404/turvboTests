@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+<h1><%= Time.now %></h1>
+  <p style="color: green"><%= notice %></p>
 
-<h1>Restaurants</h1>
-
-<div id="restaurants">
-  <% @restaurants.each do |restaurant| %>
-    <%= render restaurant %>
-    <p>
-      <%= link_to "Show this restaurant", restaurant %>
-    </p>
+  <h1>Restaurants</h1>
+  <h2>New restaurant</h2>
+  <%= render "form", restaurant: Restaurant.new  %>
+  <%= turbo_stream_from "restaurants" %>
+  <%= turbo_frame_tag 'restaurants' do %>
+    <%= render @restaurants %>
   <% end %>
-</div>
 
-<%= link_to "New restaurant", new_restaurant_path %>
+
+  <%= link_to "New restaurant", new_restaurant_path %>
+</div>

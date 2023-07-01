@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend "restaurants", partial: 'restaurants/restaurant', locals: {restaurant: @restaurant} %>
+
+<%= turbo_stream.replace "new_restaurant",
+partial: "form",
+locals: { restaurant: Restaurant.new } %>
+<%= turbo_stream.replace "my-alert",
+partial: "shared/flashes" %>
