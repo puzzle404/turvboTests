@@ -26,6 +26,9 @@ class RestaurantsController < ApplicationController
         @count = Restaurant.all.count
 
         @mensaje = "Restaurant was successfully created."
+        Turbo::StreamsChannel.broadcast_update_to :restaurants, target: "notificaciones", partial: "restaurants/notificaciones", locals: { count: Restaurant.all.count}
+        Turbo::StreamsChannel.broadcast_update_to :restaurants, target: "nuevo_mensaje", partial: "restaurants/mensaje", locals: { mensaje: "manuel Ferrer" }
+        Turbo::StreamsChannel.broadcast_prepend_to :restaurants, target: "restaurants", partial: "restaurants/restaurant", locals: { restaurant: @restaurant }
         format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
         format.turbo_stream
         flash.now[:notice] = @mensaje

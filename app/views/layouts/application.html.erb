@@ -12,9 +12,12 @@
   </head>
 
   <body data-controller='test' data-color="rojo">
-
+    <%= turbo_stream_from :restaurants %>
+    <div ></div>
+    <%= render "notificaciones", count: @count %>
+    <%= render "mensaje", mensaje: "" %>
     <%= yield %>
-    <%= render "shared/flashes" %>
+    <%#= render "shared/flashes" %>
 
   </body>
 </html>

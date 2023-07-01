@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+.notice {
+  background-color: white;
+  font-weight: 500;
+  z-index: 3;
+  color: #00376a !important;
+  position: fixed;
+  right: 2rem;
+  bottom: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 0.5rem;
+  box-shadow: 3.97576px 11.9273px 11.9273px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+
+  animation: slideOutRight 1s;
+  animation-play-state: paused;
+  /* Agrega esta línea */
+  animation-fill-mode: forwards;
+
+  & i {
+    color: #66c49d;
+    font-size: 24px;
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  /* Nueva regla para la clase slide-out-right */
+  &.slide-out-right {
+    animation-play-state: running;
+    /* Agrega esta línea */
+  }
+}
