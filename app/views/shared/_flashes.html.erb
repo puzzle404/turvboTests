@@ -1,10 +1,29 @@
-<div id="my-alert"  data-controller='flashes'>
-  <% if notice.present? %>
-    <div class="notice flash-messages" role="alert">
+<div id="my-alert">
+  <% if notice %>
+    <div class="notice" role="alert">
       <%= notice %>
+
       <i class="fa-solid fa-check"></i>
       <%# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
       </button> %>
     </div>
   <% end %>
+
+
+  <script>
+    setTimeout(function() {
+      var myAlert = document.querySelector('#my-alert');
+      if (myAlert) {
+        var notice = myAlert.querySelector('.notice');
+        if (notice) {
+          setTimeout(function() {
+            notice.classList.add('slide-out-right'); // Agrega la clase slide-out-right después de 5 segundos
+            setTimeout(function() {
+              myAlert.innerHTML = '';
+            }, 1000); // Espera 1 segundo para eliminar el elemento
+          }, 5000); // La alerta se cerrará después de 5 segundos (5000 milisegundos)
+        }
+      }
+    }, 1000);
+  </script>
 </div>

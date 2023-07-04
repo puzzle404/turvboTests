@@ -3,7 +3,7 @@
   <p style="color: green"><%= notice %></p>
   <h2>New restaurant</h2>
   <%= render "form", restaurant: Restaurant.new  %>
-
+  <h1>My restaurants</h1>
   <%= turbo_frame_tag 'restaurants' do %>
     <%= render @restaurants %>
   <% end %>

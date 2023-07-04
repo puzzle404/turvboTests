@@ -25,13 +25,12 @@ class RestaurantsController < ApplicationController
       if @restaurant.save
         @count = Restaurant.all.count
 
-        @mensaje = "Restaurant was successfully created."
         Turbo::StreamsChannel.broadcast_update_to :restaurants, target: "notificaciones", partial: "restaurants/notificaciones", locals: { count: Restaurant.all.count}
         Turbo::StreamsChannel.broadcast_update_to :restaurants, target: "nuevo_mensaje", partial: "restaurants/mensaje", locals: { mensaje: "manuel Ferrer" }
         Turbo::StreamsChannel.broadcast_prepend_to :restaurants, target: "restaurants", partial: "restaurants/restaurant", locals: { restaurant: @restaurant }
         format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
         format.turbo_stream
-        flash.now[:notice] = @mensaje
+        flash.now[:notice] = "Restaurant was successfully created."
       else
         format.html { render :new, status: :unprocessable_entity}
         format.turbo_stream { render :new, status: :unprocessable_entity, locals: { restaurant: @restaurant } }
@@ -68,6 +67,6 @@ class RestaurantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :rating)
+      params.require(:restaurant).permit(:name, :address, :rating, :user_id)
     end
 end
