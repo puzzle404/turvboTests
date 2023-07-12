@@ -37,6 +37,7 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
+        notify_all_users(@restaurant)
         @mensaje = "Restaurant was successfully created."
           format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
           format.turbo_stream { render :update, locals: { restaurant: @restaurant } }
@@ -58,6 +59,11 @@ class RestaurantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
+    end
+
+    def notify_all_users
+      ActionCable.server.broadcast('restaurant_33',
+        {message: 'Restaurant was successfully updated.'})
     end
 
     # Only allow a list of trusted parameters through.

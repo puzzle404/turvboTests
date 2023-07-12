@@ -15,7 +15,9 @@
   </p>
 
   <p>
-    <%= link_to "Show this restaurant", restaurant %>
+    <%= link_to "Show this restaurant", restaurant, data: {turbo_frame: "_top"} %>
     <%= link_to "Edit this restaurant", edit_restaurant_path(restaurant) %> |
   </p>
+  <div data-controller="websocket-restaurant"
+  data-websocket-restaurant-room-id-value="<%= restaurant.id %>"></div>
 </div>
