@@ -1,15 +1,12 @@
 <div class="container">
-<h1><%= Time.now %></h1>
+  <h1><%= Time.now %></h1>
   <p style="color: green"><%= notice %></p>
-
-  <h1>Restaurants</h1>
   <h2>New restaurant</h2>
   <%= render "form", restaurant: Restaurant.new  %>
-  <%= turbo_stream_from "restaurants" %>
+  <h1>My restaurants</h1>
   <%= turbo_frame_tag 'restaurants' do %>
     <%= render @restaurants %>
   <% end %>
-
 
   <%= link_to "New restaurant", new_restaurant_path %>
 </div>

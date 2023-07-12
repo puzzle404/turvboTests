@@ -26,6 +26,13 @@ gem "stimulus-rails"
 
 gem "simple_form"
 
+gem "devise"
+
+gem "sassc-rails"
+
+gem "autoprefixer-rails"
+
+gem "font-awesome-sass", "~> 6.1"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

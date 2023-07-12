@@ -8,6 +8,7 @@
       <%= f.input :name %>
       <%= f.input :address %>
       <%= f.input :rating %>
+      <%= f.association :user, collection: User.all, label_method: :email, value_method: :id, include_blank: true %>
     </div>
 
     <div class="form-actions">
