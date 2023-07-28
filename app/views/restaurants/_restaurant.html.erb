@@ -1,23 +1,23 @@
-<div id="<%= dom_id restaurant %>" class='border'>
-  <p>
-    <strong>Name:</strong>
-    <%= restaurant.name %>
-  </p>
+<%= turbo_frame_tag restaurant do %>
+  <div id="<%= dom_id restaurant %>" class='border shadow p-3 my-2'>
+    <p>
+      <strong>Name:</strong>
+      <%= restaurant.name %>
+    </p>
 
-  <p>
-    <strong>Address:</strong>
-    <%= restaurant.address %>
-  </p>
+    <p>
+      <strong>Address:</strong>
+      <%= restaurant.address %>
+    </p>
 
-  <p>
-    <strong>Rating:</strong>
-    <%= restaurant.rating %>
-  </p>
+    <p>
+      <strong>Rating:</strong>
+      <%= restaurant.rating %>
+    </p>
 
-  <p>
-    <%= link_to "Show this restaurant", restaurant, data: {turbo_frame: "_top"} %>
-    <%= link_to "Edit this restaurant", edit_restaurant_path(restaurant) %> |
-  </p>
-  <div data-controller="websocket-restaurant"
-  data-websocket-restaurant-room-id-value="<%= restaurant.id %>"></div>
-</div>
+    <p>
+      <%= link_to "Show this restaurant", restaurant_path(restaurant), data: {turbo_frame: restaurant} %>
+      <%= link_to "Edit this restaurant", edit_restaurant_path(restaurant), data: {turbo_frame: restaurant}%> |
+    </p>
+  </div>
+<% end %>

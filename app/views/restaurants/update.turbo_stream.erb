@@ -1,2 +1,3 @@
 
-<%= turbo_stream.update dom_id restaurant, partial: "restaurant", locals: { restaurant: restaurant } %>
+<%= turbo_stream.update dom_id @restaurant, partial: "restaurant", locals: { restaurant: @restaurant } %>
+<%= turbo_stream.replace "my-alert", partial: "shared/flashes" %>

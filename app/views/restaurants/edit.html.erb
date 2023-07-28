@@ -1,10 +1,12 @@
-<h1>Editing restaurant</h1>
+<%= turbo_frame_tag @restaurant do %>
+  <h1>Editing restaurant</h1>
 
-<%= render "form", restaurant: @restaurant %>
+  <%= render "form", restaurant: @restaurant %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this restaurant", @restaurant %> |
-  <%= link_to "Back to restaurants", restaurants_path %>
-</div>
+  <div>
+    <%= link_to "Show this restaurant", @restaurant %> |
+    <%= link_to "Back to restaurants", root_path %>
+  </div>
+<% end %>

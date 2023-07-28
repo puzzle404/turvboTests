@@ -1,5 +1,5 @@
 class RestaurantChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'restaurant_33'
+    stream_from "restaurant_#{params[:room]}"
   end
 end

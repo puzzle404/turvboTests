@@ -1,8 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 import {createConsumer} from "@rails/actioncable"
 export default class extends Controller {
+  static values = { restaurantId: Number }
   connect() {
-    createConsumer().subscriptions.create({ channel: "RestaurantChannel", room: "33" })
+    console.log("restaurant id", this.element.dataset.restaurantIdValue)
+    createConsumer().subscriptions.create({ channel: "RestaurantChannel", room: this.element.dataset.restaurantIdValue }, {
+      received(data) {
+        if (data.action === "updated"){
+          location.reload();
+        }
+      }
+    })
   }
 
 

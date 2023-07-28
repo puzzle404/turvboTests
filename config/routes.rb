@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "restaurants#index"
     resources :restaurants, except: [:index]
+    resources :convertations do
+      resources :messages
+    end
 
   # Defines the root path route ("/")
   # root "articles#index"

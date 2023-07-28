@@ -1,10 +1,33 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag @restaurant do %>
+  <p style="color: green"><%= notice %></p>
 
-<%= render @restaurant %>
+      <%= turbo_frame_tag @restaurant do %>
+      <div id="<%= dom_id @restaurant %>" class='border'>
+        <p>
+          <strong>Name:</strong>
+          <%= @restaurant.name %>
+        </p>
 
-<div>
-  <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
-  <%= link_to "Back to restaurants", restaurants_path %>
+        <p>
+          <strong>Address:</strong>
+          <%= @restaurant.address %>
+        </p>
 
-  <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
-</div>
+        <p>
+          <strong>Rating:</strong>
+          <%= @restaurant.rating %>
+        </p>
+
+        <p>
+          <%= link_to "Show this restaurant", restaurant_path(@restaurant), data: {turbo_frame: @restaurant} %>
+          <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), data: {turbo_frame: @restaurant}%> |
+          <%= link_to "Back to restaurants", root_path %>
+          <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
+        </p>
+        <div data-controller="websocket-restaurant"
+        data-restaurant-id-value="<%= @restaurant.id %>"></div>
+      </div>
+    <% end %>
+
+
+<% end %>

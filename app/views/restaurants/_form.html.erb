@@ -1,6 +1,7 @@
 
-<%= turbo_frame_tag "new_restaurant" do %>
-  <%= simple_form_for(restaurant) do |f| %>
+<%= turbo_frame_tag restaurant do %>
+  <%= simple_form_for restaurant, html: { class: "shadow border my-2 p-3"} do |f| %>
+  <h1>New restaurant</h1>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -12,7 +13,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, data: {turbo_frame: "_top"} %>
     </div>
   <% end %>
 <% end %>

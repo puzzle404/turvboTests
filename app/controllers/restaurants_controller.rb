@@ -38,14 +38,18 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def new
+    @restaurant = Restaurant.new
+  end
+
   # PATCH/PUT /restaurants/1
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        notify_all_users(@restaurant)
+        notify_all_users
         @mensaje = "Restaurant was successfully created."
           format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
-          format.turbo_stream { render :update, locals: { restaurant: @restaurant } }
+          format.turbo_stream
           flash.now[:notice] = @mensaje
 
       else
@@ -67,8 +71,8 @@ class RestaurantsController < ApplicationController
     end
 
     def notify_all_users
-      ActionCable.server.broadcast('restaurant_33',
-        {message: 'Restaurant was successfully updated.'})
+      ActionCable.server.broadcast("restaurant_#{@restaurant.id}",
+        {action: 'updated'})
     end
 
     # Only allow a list of trusted parameters through.
