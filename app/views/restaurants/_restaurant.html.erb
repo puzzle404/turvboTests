@@ -1,4 +1,5 @@
 <%= turbo_frame_tag restaurant do %>
+<h1><%= Time.now %></h1>
   <div id="<%= dom_id restaurant %>" class='border shadow p-3 my-2'>
     <p>
       <strong>Name:</strong>
@@ -17,7 +18,6 @@
 
     <p>
       <%= link_to "Show this restaurant", restaurant_path(restaurant), data: {turbo_frame: restaurant} %>
-      <%= link_to "Edit this restaurant", edit_restaurant_path(restaurant), data: {turbo_frame: restaurant}%> |
     </p>
   </div>
 <% end %>

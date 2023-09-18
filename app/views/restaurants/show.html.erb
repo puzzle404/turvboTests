@@ -19,13 +19,12 @@
         </p>
 
         <p>
-          <%= link_to "Show this restaurant", restaurant_path(@restaurant), data: {turbo_frame: @restaurant} %>
           <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), data: {turbo_frame: @restaurant}%> |
-          <%= link_to "Back to restaurants", root_path %>
-          <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
+          <%= link_to "Back to restaurants", root_path, data: {turbo_frame:  "restaurants" } %>
+          <%= button_to "Destroy this restaurant", @restaurant,data: {turbo_frame:  "restaurants" }, method: :delete  %>
         </p>
         <div data-controller="websocket-restaurant"
-        data-restaurant-id-value="<%= @restaurant.id %>"></div>
+        data-restaurant-id-value="<%= @restaurant %>"></div>
       </div>
     <% end %>
 

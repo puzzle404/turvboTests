@@ -45,24 +45,24 @@ class RestaurantsController < ApplicationController
 
   # PATCH/PUT /restaurants/1
   def update
-    respond_to do |format|
+
       if @restaurant.update(restaurant_params)
         notify_all_users
         @mensaje = "Restaurant was successfully created."
-          format.html { redirect_to @restaurant, notice: "Restaurant was successfully created."}
-          format.turbo_stream
-          flash.now[:notice] = @mensaje
+        flash[:notice] = @mensaje
+          redirect_to root_path, notice: "Restaurant was successfully created."
+          # format.turbo_stream
 
       else
         render :edit, status: :unprocessable_entity
       end
-    end
+
   end
 
   # DELETE /restaurants/1
   def destroy
     @restaurant.destroy
-    redirect_to restaurants_url, notice: "Restaurant was successfully destroyed.", status: :see_other
+    redirect_to root_path, notice: "Restaurant was successfully destroyed.", status: :see_other
   end
 
   private
