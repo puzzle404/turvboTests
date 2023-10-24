@@ -2,16 +2,16 @@
  <h3>Mailbox</h3>
  <div class="ui list">
   <div class="item">
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
-    <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
+    <% @convertations.each do |convertation| %>
+      <% if convertation.sender_id == current_user.id ||      convertation.recipient_id == current_user.id %>
+        <% if convertation.sender_id == current_user.id %>
+          <% recipient = User.find(convertation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(convertation.sender_id) %>
+        <% end %>
+        <%= link_to recipient.email,   convertation_messages_path(convertation)%>
+      <% end %>
     <% end %>
-    <%= link_to recipient.email,   conversation_messages_path(conversation)%>
-   <% end %>
-  <% end %>
   </div>
  </div>
 </div>

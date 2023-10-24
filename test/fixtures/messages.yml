@@ -2,12 +2,12 @@
 
 one:
   body: MyText
-  conversation: one
+  convertation: one
   user: one
   read: false
 
 two:
   body: MyText
-  conversation: two
+  convertation: two
   user: two
   read: false

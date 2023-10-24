@@ -1,0 +1,12 @@
+<%= turbo_stream_from @convertation.id %>
+<div id="messages">
+  <% @messages.each do |message| %>
+    <%= render "message", message: message %>
+  <% end %>
+</div>
+
+<%= form_for [@convertation, @message] do |f| %>
+  <%= f.text_area :body %>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+  <%= f.submit "Send Reply" %>
+<% end %>

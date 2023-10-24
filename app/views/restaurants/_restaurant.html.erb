@@ -1,4 +1,5 @@
 <%= turbo_frame_tag restaurant do %>
+<%= render "shared/flashes" %>
 <h1><%= Time.now %></h1>
   <div id="<%= dom_id restaurant %>" class='border shadow p-3 my-2'>
     <p>
