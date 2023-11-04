@@ -2,7 +2,7 @@
   <h1><%= Time.now %></h1>
   <p style="color: green"><%= notice %></p>
   <%= render "form", restaurant: Restaurant.new  %>
-  <h1>My restaurants</h1>
+  <h1>Restaurants</h1>
   <%= turbo_frame_tag 'restaurants' do %>
     <%= render @restaurants %>
   <% end %>

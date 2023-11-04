@@ -1,11 +1,3 @@
 <%= turbo_frame_tag @restaurant do %>
-
   <%= render "form", restaurant: @restaurant %>
-
-  <br>
-
-  <div>
-    <%= link_to "Show this restaurant", @restaurant %> |
-    <%= link_to "Back to restaurants", root_path %>
-  </div>
 <% end %>

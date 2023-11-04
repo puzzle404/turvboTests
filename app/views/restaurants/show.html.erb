@@ -1,7 +1,6 @@
 <%= turbo_frame_tag @restaurant do %>
   <p style="color: green"><%= notice %></p>
 
-      <%= turbo_frame_tag @restaurant do %>
       <div id="<%= dom_id @restaurant %>" class='border'>
         <p>
           <strong>Name:</strong>
@@ -26,7 +25,6 @@
         <div data-controller="websocket-restaurant"
         data-restaurant-id-value="<%= @restaurant %>"></div>
       </div>
-    <% end %>
 
 
 <% end %>
