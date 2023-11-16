@@ -47,11 +47,11 @@ class RestaurantsController < ApplicationController
   def update
       if @restaurant.update(restaurant_params)
         notify_all_users
-        @mensaje = "Restaurant was successfully created."
+        # @mensaje = "Restaurant was successfully created."
         # flash[:notice] = @mensaje
           # redirect_to root_path, notice: "Restaurant was successfully created."
           # @restaurants = Restaurant.all
-          flash[:notice] = "Restaurant was successfully created."
+          flash.now[:notice] = "Restaurant was successfully created."
           render partial: "restaurants/restaurant", locals: { restaurant: @restaurant }
           # format.turbo_stream
 
