@@ -1,0 +1,6 @@
+<!-- app/views/restaurants/form_turbo_stream.turbo_stream.erb -->
+<%= turbo_stream.replace dom_id(@restaurant, :ts) do %>
+<%= turbo_frame_tag dom_id(@restaurant, :ts )do  %>
+  <%= render partial: "form_turbo_stream", locals: { restaurant: @restaurant } %>
+  <% end %>
+<% end %>

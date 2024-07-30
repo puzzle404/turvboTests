@@ -60,6 +60,15 @@ class RestaurantsController < ApplicationController
       end
   end
 
+   
+  def form_turbo_stream
+    @restaurant = Restaurant.find(params[:id])
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end 
+
   # DELETE /restaurants/1
   def destroy
     @restaurant.destroy

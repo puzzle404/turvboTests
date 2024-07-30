@@ -1,0 +1,5 @@
+<%= simple_form_for restaurant, url: restaurant_path(restaurant), method: :patch, html: { class: 'd-flex' }  do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.submit %>
+<% end %>

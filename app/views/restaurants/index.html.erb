@@ -6,5 +6,32 @@
   <%= turbo_frame_tag 'restaurants' do %>
     <%= render @restaurants %>
   <% end %>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant|  %>
+      <tr id="<%= dom_id(restaurant, :ts) %>">
+        <th scope="row">1</th>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.rating %></td>
+        <td><%= restaurant.created_at %></td>
+        <td>
+          <%= link_to 'Edit TS', form_turbo_stream_path(restaurant), data: {turbo_stream: true} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
   <%= link_to "New restaurant", new_restaurant_path %>
 </div>
